@@ -10,7 +10,8 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -19,14 +20,15 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install pyinstaller
+        pip install pyinstaller keyboard pyautogui pyperclip
 
     - name: Build EXE
       run: |
         pyinstaller --onefile --noconsole barcode.py
 
-    - name: Upload EXE as artifact
+    - name: Upload EXE artifact
       uses: actions/upload-artifact@v3
       with:
         name: barcode_exe
         path: dist/barcode.exe
+
