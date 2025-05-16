@@ -27,8 +27,7 @@ jobs:
         pyinstaller --onefile --noconsole barcode.py
 
     - name: Upload EXE artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v3.1.3
       with:
         name: barcode_exe
         path: dist/barcode.exe
-
